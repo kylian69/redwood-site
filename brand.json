@@ -1,0 +1,10 @@
+{
+  "name": "Redwood",
+  "baseline": "L’art du tabac",
+  "palette": {
+    "noir": "#0D0D0D",
+    "dore": "#D4AF37",
+    "blanc": "#F5F5F5",
+    "bordeaux": "#5B1A1A"
+  }
+}

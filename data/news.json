@@ -1,0 +1,27 @@
+{
+  "news": [
+    {
+      "category": "Nouveaux produits",
+      "items": [
+        "Cigares Reserva Oro — série limitée",
+        "Vape saveur Bois Santal — édition saisonnière",
+        "Liquides gamme Signature — profils fruités & boisés"
+      ]
+    },
+    {
+      "category": "Produits exclusifs",
+      "items": [
+        "Coffret cigare Prestige (numéroté)",
+        "Cartouche premium Heritage"
+      ]
+    },
+    {
+      "category": "Événements à venir",
+      "items": [
+        "Vendredi — Soirée dégustation au Salon Redwood",
+        "Mardi — Stand éphémère — Quartier Harmony",
+        "Prochain mois — Lancement édition limitée"
+      ]
+    }
+  ]
+}

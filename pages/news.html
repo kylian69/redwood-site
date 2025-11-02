@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Actualités — Redwood</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body class="page">
+  <header class="sub-header">
+    <a href="../index.html" class="back">← Retour</a>
+    <h1>Actualités & Éditions</h1>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div id="news-grid" class="grid cards"></div>
+      <div class="tiny muted" style="margin-top:1rem">Modifiez le fichier <code>/data/news.json</code> pour mettre à jour cette page.</div>
+    </div>
+  </main>
+
+  <script>
+    async function loadNews(){
+      try{
+        const res = await fetch('../data/news.json', {cache:'no-store'});
+        const data = await res.json();
+        const grid = document.getElementById('news-grid');
+        grid.innerHTML = '';
+        (data.news || []).forEach(section => {
+          const article = document.createElement('article');
+          article.className = 'card';
+          const h3 = document.createElement('h3');
+          h3.textContent = section.category || 'Section';
+          article.appendChild(h3);
+          const ul = document.createElement('ul');
+          ul.className = 'list-bullet';
+          (section.items || []).forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            ul.appendChild(li);
+          });
+          article.appendChild(ul);
+          grid.appendChild(article);
+        });
+      }catch(e){
+        const grid = document.getElementById('news-grid');
+        grid.innerHTML = '<div class="card"><p>Impossible de charger les actualités.</p></div>';
+      }
+    }
+    loadNews();
+  </script>
+</body>
+</html>
