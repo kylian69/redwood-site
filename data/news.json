@@ -6,27 +6,6 @@
       "color": "#D4AF37",
       "backgroundColor": "rgba(212, 175, 55, 0.1)",
       "items": [
-        {
-          "title": "Cigares Reserva Oro",
-          "description": "Série limitée — Édition d'exception",
-          "date": "2024-01-15",
-          "tag": "Nouveau",
-          "tagColor": "#D4AF37"
-        },
-        {
-          "title": "Vape saveur Bois Santal",
-          "description": "Édition saisonnière — Notes boisées et épicées",
-          "date": "2024-01-10",
-          "tag": "Saison",
-          "tagColor": "#8B4513"
-        },
-        {
-          "title": "Liquides gamme Signature",
-          "description": "Profils fruités & boisés — Collection premium",
-          "date": "2024-01-05",
-          "tag": "Premium",
-          "tagColor": "#D4AF37"
-        }
       ]
     },
     {
@@ -35,20 +14,6 @@
       "color": "#8B4513",
       "backgroundColor": "rgba(139, 69, 19, 0.1)",
       "items": [
-        {
-          "title": "Coffret cigare Prestige",
-          "description": "Numéroté — Édition collector",
-          "date": "Disponible",
-          "tag": "Exclusif",
-          "tagColor": "#D4AF37"
-        },
-        {
-          "title": "Cartouche premium Heritage",
-          "description": "Sélection d'exception — Stock limité",
-          "date": "Disponible",
-          "tag": "Premium",
-          "tagColor": "#D4AF37"
-        }
       ]
     },
     {
@@ -58,23 +23,9 @@
       "backgroundColor": "rgba(91, 26, 26, 0.1)",
       "items": [
         {
-          "title": "Soirée dégustation",
-          "description": "Vendredi — Salon Redwood — Sur réservation",
-          "date": "2024-01-19",
-          "tag": "Événement",
-          "tagColor": "#5B1A1A"
-        },
-        {
-          "title": "Stand éphémère",
-          "description": "Mardi — Quartier Harmony — Découverte des nouveautés",
-          "date": "2024-01-16",
-          "tag": "Public",
-          "tagColor": "#5B1A1A"
-        },
-        {
-          "title": "Lancement édition limitée",
-          "description": "Prochain mois — Révélation de la collection exclusive",
-          "date": "2024-02-01",
+          "title": "Nouveau départ",
+          "description": "Prochainement la nouvelle maison Redwood sera ouverte",
+          "date": "2025-11-15",
           "tag": "À venir",
           "tagColor": "#D4AF37"
         }
