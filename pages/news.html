@@ -21,6 +21,17 @@
   </main>
 
   <script>
+    function formatDate(dateString) {
+      if (!dateString || dateString === 'Disponible') return dateString;
+      try {
+        const date = new Date(dateString);
+        const options = { day: 'numeric', month: 'long', year: 'numeric' };
+        return date.toLocaleDateString('fr-FR', options);
+      } catch {
+        return dateString;
+      }
+    }
+
     async function loadNews(){
       try{
         const res = await fetch('../data/news.json', {cache:'no-store'});
@@ -29,18 +40,81 @@
         grid.innerHTML = '';
         (data.news || []).forEach(section => {
           const article = document.createElement('article');
-          article.className = 'card';
+          article.className = 'card news-card';
+          
+          // En-tête de la carte avec icône et catégorie
+          const header = document.createElement('div');
+          header.className = 'news-header';
+          if (section.icon) {
+            const icon = document.createElement('span');
+            icon.className = 'news-icon';
+            icon.textContent = section.icon;
+            icon.style.fontSize = '1.8rem';
+            header.appendChild(icon);
+          }
           const h3 = document.createElement('h3');
           h3.textContent = section.category || 'Section';
-          article.appendChild(h3);
-          const ul = document.createElement('ul');
-          ul.className = 'list-bullet';
+          if (section.color) {
+            h3.style.color = section.color;
+          }
+          header.appendChild(h3);
+          article.appendChild(header);
+          
+          // Style de fond personnalisé
+          if (section.backgroundColor) {
+            article.style.background = `linear-gradient(135deg, ${section.backgroundColor}, #111)`;
+            article.style.borderColor = section.color || 'rgba(212,175,55,.2)';
+          }
+
+          const itemsContainer = document.createElement('div');
+          itemsContainer.className = 'news-items';
+          
           (section.items || []).forEach(item => {
-            const li = document.createElement('li');
-            li.textContent = item;
-            ul.appendChild(li);
+            const itemEl = document.createElement('div');
+            itemEl.className = 'news-item';
+            
+            // En-tête de l'item avec titre et tag
+            const itemHeader = document.createElement('div');
+            itemHeader.className = 'news-item-header';
+            
+            const title = document.createElement('h4');
+            title.textContent = typeof item === 'string' ? item : (item.title || item);
+            title.className = 'news-item-title';
+            itemHeader.appendChild(title);
+            
+            if (typeof item !== 'string' && item.tag) {
+              const tag = document.createElement('span');
+              tag.className = 'news-tag';
+              tag.textContent = item.tag;
+              if (item.tagColor) {
+                tag.style.backgroundColor = item.tagColor;
+                tag.style.color = '#000';
+              }
+              itemHeader.appendChild(tag);
+            }
+            
+            itemEl.appendChild(itemHeader);
+            
+            // Description
+            if (typeof item !== 'string' && item.description) {
+              const desc = document.createElement('p');
+              desc.className = 'news-item-description';
+              desc.textContent = item.description;
+              itemEl.appendChild(desc);
+            }
+            
+            // Date
+            if (typeof item !== 'string' && item.date) {
+              const date = document.createElement('div');
+              date.className = 'news-item-date';
+              date.innerHTML = '<span class="date-icon">📆</span> ' + formatDate(item.date);
+              itemEl.appendChild(date);
+            }
+            
+            itemsContainer.appendChild(itemEl);
           });
-          article.appendChild(ul);
+          
+          article.appendChild(itemsContainer);
           grid.appendChild(article);
         });
       }catch(e){
